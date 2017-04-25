@@ -11,5 +11,7 @@
 
     <artifactId>zeus-infra</artifactId>
 
-
+    <build>
+        <finalName>zeus-infra</finalName>
+    </build>
 </project>

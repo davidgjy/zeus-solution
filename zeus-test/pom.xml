@@ -11,5 +11,17 @@
 
     <artifactId>zeus-test</artifactId>
 
+    <dependencies>
+        <!-- dependency modules -->
+        <dependency>
+            <groupId>org.genesis</groupId>
+            <artifactId>zeus-infra</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- dependency modules -->
+    </dependencies>
 
+    <build>
+        <finalName>zeus-test</finalName>
+    </build>
 </project>
