@@ -10,6 +10,7 @@ public class CollectionUtil {
     public static <E> boolean contains(Collection<E> c, Object obj) {
         for (E element : c)
             if (element.equals(obj))
-                return true; return false;
+                return true;
+        return false;
     }
 }
