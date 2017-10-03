@@ -8,10 +8,10 @@ package zeus.test.concurrent.race.unsafe; /**
  */
 public class UnsynchBankTest {
     public static void main(String[] args) {
-        zeus.test.concurrent.race.lock.Bank b = new zeus.test.concurrent.race.lock.Bank(NACCOUNTS, INITIAL_BALANCE);
+        Bank b = new Bank(NACCOUNTS, INITIAL_BALANCE);
         int i;
         for (i = 0; i < NACCOUNTS; i++) {
-            zeus.test.concurrent.race.lock.TransferRunnable r = new zeus.test.concurrent.race.lock.TransferRunnable(b, i, INITIAL_BALANCE);
+            TransferRunnable r = new TransferRunnable(b, i, INITIAL_BALANCE);
             Thread t = new Thread(r);
             t.start();
         }
@@ -87,7 +87,7 @@ class TransferRunnable implements Runnable {
      @param from the account to transfer money from
      @param max the maximum amount of money in each transfer
      */
-    public TransferRunnable(zeus.test.concurrent.race.lock.Bank b, int from, double max) {
+    public TransferRunnable(Bank b, int from, double max) {
         bank = b;
         fromAccount = from;
         maxAmount = max;
@@ -105,7 +105,7 @@ class TransferRunnable implements Runnable {
         }
     }
 
-    private zeus.test.concurrent.race.lock.Bank bank;
+    private Bank bank;
     private int fromAccount;
     private double maxAmount;
     private int DELAY = 10;
