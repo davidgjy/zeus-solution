@@ -1,4 +1,4 @@
-package zeus.test.concurrent;
+package zeus.test.concurrent.block;
 
 import java.io.*;
 import java.util.*;
