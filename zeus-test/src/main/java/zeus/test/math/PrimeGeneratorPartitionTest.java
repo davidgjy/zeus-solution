@@ -15,7 +15,7 @@ public class PrimeGeneratorPartitionTest {
         Scanner sc = new Scanner(System.in);
         int upperNumber = sc.nextInt();
 
-        int threadNum = 5;
+        int threadNum = 50;
         int avgNum = upperNumber / threadNum;
 
         int low = 2;
