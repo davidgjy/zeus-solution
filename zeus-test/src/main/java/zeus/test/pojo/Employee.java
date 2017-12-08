@@ -34,6 +34,7 @@ public class Employee implements Cloneable, Comparable<Employee>
               other.getHireDay().equals(getHireDay());
    }
 
+   @Override
    public Employee clone() throws CloneNotSupportedException
    {
       // call Object.clone()
@@ -75,11 +76,13 @@ public class Employee implements Cloneable, Comparable<Employee>
     * @return a negative value if this employee has a lower salary than
     * otherObject, 0 if the salaries are the same, a positive value otherwise
     */
+   @Override
    public int compareTo(Employee other)
    {
       return Double.compare(salary, other.salary);
    }
 
+   @Override
    public String toString()
    {
       return "Employee[name=" + name + ",salary=" + salary + ",hireDay=" + hireDay + "]";
