@@ -12,12 +12,11 @@ public class PerformanceManager {
     private StopWatch watch;
     private TimeDevice timeDevice;
 
-//    public PerformanceManager(String moduleName, TimeDevice timeDevice) {
-//        this.moduleName = moduleName;
-//        this.timeDevice = timeDevice;
-//        this.watch = new StopWatch();
-//    }
-
+    public PerformanceManager(String moduleName, TimeDevice timeDevice) {
+        this.moduleName = moduleName;
+        this.timeDevice = timeDevice;
+        this.watch = new StopWatch();
+    }
 
     public StopWatch getWatch() {
         return watch;

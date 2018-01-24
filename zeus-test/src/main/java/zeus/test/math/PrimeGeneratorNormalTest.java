@@ -1,5 +1,7 @@
 package zeus.test.math;
 
+import zeus.infra.performance.PerformanceManager;
+import zeus.infra.performance.TimeConsole;
 import zeus.math.PrimeGenerator;
 
 import java.util.Scanner;
@@ -15,8 +17,14 @@ public class PrimeGeneratorNormalTest {
         Scanner sc = new Scanner(System.in);
         int upperNumber = sc.nextInt();
 
+        PerformanceManager perf = new PerformanceManager("PrimeGeneratorTest", new TimeConsole());
+        perf.start("PrimeGeneratorNormalTest - Normal");
+
         // Launch the prime numbers generator
         PrimeGenerator pg = new PrimeGenerator(upperNumber);
         pg.run();
+
+        perf.stop();
+        perf.printTime();
     }
 }

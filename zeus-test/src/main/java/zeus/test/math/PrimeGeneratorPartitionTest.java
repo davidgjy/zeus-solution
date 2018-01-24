@@ -15,14 +15,14 @@ public class PrimeGeneratorPartitionTest {
         Scanner sc = new Scanner(System.in);
         int upperNumber = sc.nextInt();
 
-        int threadNum = 50;
+        int threadNum = 10;
         int avgNum = upperNumber / threadNum;
 
         int low = 2;
         int up = avgNum;
         for (int i = 1; i <=threadNum; i++) {
             // Launch the prime numbers generator
-            Thread task = new PrimeGeneratorPartitionThread(low, up);
+            Thread task = new PrimeGeneratorPartitionThread(low, up, threadNum);
             task.start();
 
             low = avgNum * i + 1;

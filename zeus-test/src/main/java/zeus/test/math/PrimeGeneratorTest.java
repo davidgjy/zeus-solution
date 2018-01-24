@@ -1,5 +1,7 @@
 package zeus.test.math;
 
+import zeus.infra.performance.PerformanceManager;
+import zeus.infra.performance.TimeConsole;
 import zeus.math.PrimeGeneratorThread;
 
 import java.util.Scanner;
