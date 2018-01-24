@@ -1,14 +1,13 @@
-package zeus.test.concurrent.race.lock; /**
+package zeus.test.concurrency.race.sync; /**
    @version 1.30 2004-08-01
    @author Cay Horstmann
 */
 
-import java.util.concurrent.locks.*;
-
 /** 
-   This program shows how multiple threads can safely access a data structure.
+   This program shows how multiple threads can safely access a data structure, using 
+   synchronized methods.
 */
-public class SynchBankTest
+public class SynchBankTest2
 {  
    public static void main(String[] args)
    {  
@@ -42,8 +41,6 @@ class Bank
       accounts = new double[n];
       for (int i = 0; i < accounts.length; i++)
          accounts[i] = initialBalance;
-      bankLock = new ReentrantLock();
-      sufficientFunds = bankLock.newCondition();
    }
 
    /**
@@ -52,47 +49,31 @@ class Bank
       @param to the account to transfer to
       @param amount the amount to transfer
    */
-   public void transfer(int from, int to, double amount)
+   public synchronized void transfer(int from, int to, double amount)
       throws InterruptedException
    {  
-      bankLock.lock();
-      try
-      {
-         while (accounts[from] < amount)
-            sufficientFunds.await();
-         System.out.print(Thread.currentThread());      
-         accounts[from] -= amount;
-         System.out.printf(" %10.2f from %d to %d", amount, from, to);
-         accounts[to] += amount;
-         System.out.printf(" Total Balance: %10.2f%n", getTotalBalance());
-         sufficientFunds.signalAll();
-      }
-      finally
-      {
-         bankLock.unlock();
-      }
+      while (accounts[from] < amount)
+         wait();
+      System.out.print(Thread.currentThread());      
+      accounts[from] -= amount;
+      System.out.printf(" %10.2f from %d to %d", amount, from, to);
+      accounts[to] += amount;
+      System.out.printf(" Total Balance: %10.2f%n", getTotalBalance());
+      notifyAll();
    }
 
    /**
       Gets the sum of all account balances.
       @return the total balance
    */
-   public double getTotalBalance()
+   public synchronized double getTotalBalance()
    {  
-      bankLock.lock();
-      try
-      {      
-         double sum = 0;
-
-         for (double a : accounts)
-            sum += a;
-
-         return sum;
-      }
-      finally
-      {
-         bankLock.unlock();
-      }
+      double sum = 0;
+      
+      for (double a : accounts)
+         sum += a;
+      
+      return sum;
    }
 
    /**
@@ -105,8 +86,6 @@ class Bank
    }
 
    private final double[] accounts;
-   private Lock bankLock;
-   private Condition sufficientFunds;
 }
 
 /**
@@ -140,9 +119,7 @@ class TransferRunnable implements Runnable
             Thread.sleep((int) (DELAY * Math.random()));
          }
       }
-      catch (InterruptedException e) {
-
-      }
+      catch (InterruptedException e) {}
    }
 
    private Bank bank;

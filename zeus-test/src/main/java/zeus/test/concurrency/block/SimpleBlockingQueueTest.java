@@ -1,4 +1,4 @@
-package zeus.test.concurrent.block;
+package zeus.test.concurrency.block;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

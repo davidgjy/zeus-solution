@@ -1,4 +1,4 @@
-package zeus.test.concurrent.race.unsafe; /**
+package zeus.test.concurrency.race.unsafe; /**
  * @version 1.30 2004-08-01
  * @author Cay Horstmann
  */
