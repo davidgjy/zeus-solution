@@ -13,21 +13,21 @@ public class PrimeGeneratorPartitionTest {
 
         System.out.println("Please input upper number to calculate primes: ");
         Scanner sc = new Scanner(System.in);
-        int upperNumber = sc.nextInt();
+        int range = sc.nextInt();
 
         int threadNum = 10;
-        int avgNum = upperNumber / threadNum;
+        int avgNum = range / threadNum;
 
         int low = 2;
-        int up = avgNum;
+        int high = avgNum;
         for (int i = 1; i <=threadNum; i++) {
             // Launch the prime numbers generator
-            Thread task = new PrimeGeneratorPartitionThread(low, up, threadNum);
+            Thread task = new PrimeGeneratorPartitionThread(low, high, threadNum);
             task.start();
 
             low = avgNum * i + 1;
-            up = avgNum  * (i + 1);
-            if (i == threadNum - 1) { up = upperNumber; }
+            high = avgNum  * (i + 1);
+            if (i == threadNum - 1) { high = range; }
         }
     }
 }

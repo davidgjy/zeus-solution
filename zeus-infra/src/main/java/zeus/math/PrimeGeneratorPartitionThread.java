@@ -11,13 +11,13 @@ public class PrimeGeneratorPartitionThread extends Thread {
 
     private static Integer threadCount = 0;
 
-    private int lowerNumber;
-    private int upperNumber;
+    private int lowNumber;
+    private int highNumber;
     private int threadNum;
 
-    public PrimeGeneratorPartitionThread(int lowerNumber, int upperNumber, int threadNum) {
-        this.lowerNumber = lowerNumber;
-        this.upperNumber = upperNumber;
+    public PrimeGeneratorPartitionThread(int lowNumber, int highNumber, int threadNum) {
+        this.lowNumber = lowNumber;
+        this.highNumber = highNumber;
         this.threadNum = threadNum;
     }
 
@@ -29,10 +29,10 @@ public class PrimeGeneratorPartitionThread extends Thread {
         PerformanceManager perf = new PerformanceManager("PrimeGeneratorPartitionThread", new TimeConsole());
         perf.start("PrimeGeneratorPartitionThread");
 
-        long number = lowerNumber;
+        long number = lowNumber;
 
         // This bucle never ends... until is interrupted
-        while (number <= upperNumber) {
+        while (number <= highNumber) {
             if (isPrime(number)) {
                 System.out.printf("Number %d is Prime \n", number);
             }
