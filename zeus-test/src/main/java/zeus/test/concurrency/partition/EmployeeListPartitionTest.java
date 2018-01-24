@@ -17,8 +17,9 @@ public class EmployeeListPartitionTest {
     public static void main(String[] args) {
         System.out.println("Please input employee number: ");
         Scanner sc = new Scanner(System.in);
-        int threadNum = 10;
         int empNum = sc.nextInt();
+        System.out.println("Please input thread number: ");
+        int threadNum = sc.nextInt();
         List<Employee> employees = initEmployees(empNum);
         HashMap<Integer, List<Employee>> partionEmployees = GenericListPartitioner.<Employee>split(employees, threadNum);
         displayEmployeesConcurrent(partionEmployees, threadNum);

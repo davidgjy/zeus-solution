@@ -3,9 +3,6 @@ package zeus.concurrency.partition;
 import zeus.infra.performance.PerformanceManager;
 import zeus.infra.performance.TimeConsole;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -41,11 +38,10 @@ public abstract class GenericPartitionListThread<T> extends Thread {
 
         synchronized (this) {
             threadCount++;
-            System.out.println("Thread Count: " + threadCount + ", partition size:" + partitionList.size());
-        }
-
-        if (threadCount == threadNum) {
-            perf.printTime();
+            System.out.println("Thread Count: " + threadCount + ", partition size:" + partitionList.size() + ", Thread Num: " + threadNum);
+            if (threadCount == threadNum) {
+                perf.printTime();
+            }
         }
     }
 

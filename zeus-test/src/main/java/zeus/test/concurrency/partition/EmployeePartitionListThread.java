@@ -20,14 +20,14 @@ public class EmployeePartitionListThread extends GenericPartitionListThread<Empl
     @Override
     public void callback(List<Employee> partitionList) {
         try {
-            Thread.sleep(4000);
             for (Employee employee:partitionList) {
+                Thread.sleep(200);
                 System.out.println(employee);
             }
-            System.out.println("-------------------------------------------");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
     }
 }
+
