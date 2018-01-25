@@ -28,21 +28,8 @@ public abstract class GenericPartitionListThread<T> extends Thread {
      */
     @Override
     public void run() {
-        PerformanceManager perf = new PerformanceManager("GenericPartitionListThread", new TimeConsole());
-        perf.start("GenericPartitionListThread");
-
         // business callback
         callback(partitionList);
-
-        perf.stop();
-
-        synchronized (this) {
-            threadCount++;
-            System.out.println("Thread Count: " + threadCount + ", partition size:" + partitionList.size() + ", Thread Num: " + threadNum);
-            if (threadCount == threadNum) {
-                perf.printTime();
-            }
-        }
     }
 
     /**
