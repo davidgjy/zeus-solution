@@ -6,7 +6,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class SimpleMessageDemo {
+public class SimpleProducer {
     public static void main(String[] args) {
         Properties kafkaProps = new Properties();
         kafkaProps.put("bootstrap.servers", "localhost:9092");
@@ -19,8 +19,9 @@ public class SimpleMessageDemo {
             while (true) {
                 Scanner s = new Scanner(System.in);
                 String line = s.nextLine();
-                if (line.equals("exit"))
+                if (line.equals("exit")) {
                     break;
+                }
                 record = new ProducerRecord<>("genesis", "product", line);
                 producer.send(record);
                 //System.out.println(line);
