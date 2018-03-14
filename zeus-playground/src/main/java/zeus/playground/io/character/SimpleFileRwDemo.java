@@ -5,13 +5,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * @Author: KG
- * @Description:
- * @Date: Created in 上午9:02 2018/3/14
- * @Modified by:
+ * @author: KG
+ * @description:
+ * @date: Created in 上午9:02 2018/3/14
+ * @modified by:
  */
 
-public class SimpleFileRWDemo {
+public class SimpleFileRwDemo {
     public static void main(String[] args) throws IOException {
         String message = "你好, 这是一条字符串信息!";
 
