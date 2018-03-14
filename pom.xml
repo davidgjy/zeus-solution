@@ -23,6 +23,7 @@
         <module>zeus-test</module>
         <module>zeus-network</module>
         <module>zeus-kafka</module>
+        <module>zeus-playground</module>
     </modules>
 
     <build>
