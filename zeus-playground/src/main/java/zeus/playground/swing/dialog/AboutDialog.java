@@ -2,11 +2,7 @@ package zeus.playground.swing.dialog;
 
 import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  * A sample modal dialog that displays a message and waits for the user to click the OK button.
@@ -36,6 +32,11 @@ public class AboutDialog extends JDialog
         // add OK button to southern border
         JPanel panel = new JPanel();
         panel.add(ok);
+//        JTextArea text = new JTextArea();
+//        text.setRows(5);
+//        text.setColumns(30);
+
+//        panel.add(text);
         add(panel, BorderLayout.SOUTH);
 
         pack();
