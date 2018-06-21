@@ -7,10 +7,8 @@ import javax.swing.*;
 /**
  * A sample modal dialog that displays a message and waits for the user to click the OK button.
  */
-public class AboutDialog extends JDialog
-{
-    public AboutDialog(JFrame owner)
-    {
+public class AboutDialog extends JDialog {
+    public AboutDialog(JFrame owner) {
         super(owner, "ToolBox", true);
 
         Font f1 = new Font("Serif", Font.BOLD, 80);
