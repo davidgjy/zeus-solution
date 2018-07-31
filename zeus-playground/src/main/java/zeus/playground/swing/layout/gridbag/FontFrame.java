@@ -1,15 +1,9 @@
 package zeus.playground.swing.layout.gridbag;
 
-import java.awt.Font;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
 /**
  * A frame that uses a grid bag layout to arrange font selection components.
@@ -23,7 +17,15 @@ public class FontFrame extends JFrame {
     private JCheckBox bold;
     private JCheckBox italic;
     private JTextArea sample;
-    private JTextArea sample2;
+    private JTable table;
+
+    private String[] columnNames = {"Planet", "Radius", "Moons", "Gaseous", "Color"};
+    private Object[][] cells = {{"Mercury", 2440.0, 0, false, Color.YELLOW},
+            {"Venus", 6052.0, 0, false, Color.YELLOW}, {"Earth", 6378.0, 1, false, Color.BLUE},
+            {"Mars", 3397.0, 2, false, Color.RED}, {"Jupiter", 71492.0, 16, true, Color.ORANGE},
+            {"Saturn", 60268.0, 18, true, Color.ORANGE},
+            {"Uranus", 25559.0, 17, true, Color.BLUE}, {"Neptune", 24766.0, 8, true, Color.BLUE},
+            {"Pluto", 1137.0, 1, false, Color.BLACK}};
 
     public FontFrame() {
         GridBagLayout layout = new GridBagLayout();
@@ -58,11 +60,14 @@ public class FontFrame extends JFrame {
         sample.setLineWrap(true);
         sample.setBorder(BorderFactory.createEtchedBorder());
 
-        sample2 = new JTextArea(TEXT_ROWS, TEXT_COLUMNS);
+        table = new JTable(cells, columnNames);
+        table.setAutoCreateRowSorter(true);
+
+        /*sample2 = new JTextArea(TEXT_ROWS, TEXT_COLUMNS);
         sample2.setText("Sample text 2");
         sample2.setEditable(false);
         sample2.setLineWrap(true);
-        sample2.setBorder(BorderFactory.createEtchedBorder());
+        sample2.setBorder(BorderFactory.createEtchedBorder());*/
 
         // add components to grid, using GBC convenience class
 
@@ -75,7 +80,7 @@ public class FontFrame extends JFrame {
         add(bold, new GBC(0, 2, 2, 1).setAnchor(GBC.CENTER).setWeight(100, 100));
         add(italic, new GBC(0, 3, 2, 1).setAnchor(GBC.CENTER).setWeight(100, 100));
         add(sample, new GBC(2, 0, 1, 2).setFill(GBC.BOTH).setWeight(100, 50));
-        add(sample2, new GBC(2, 2, 1, 2).setFill(GBC.BOTH).setWeight(100, 50));
+        add(new JScrollPane(table), new GBC(2, 2, 1, 2).setFill(GBC.BOTH).setWeight(100, 50));
         pack();
         updateSample();
     }
