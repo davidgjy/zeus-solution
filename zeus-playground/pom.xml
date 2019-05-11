@@ -13,6 +13,7 @@
 
     <properties>
         <dom4j.version>1.6.1</dom4j.version>
+        <cglib.version>3.2.12</cglib.version>
     </properties>
 
     <dependencies>
@@ -20,6 +21,12 @@
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>${dom4j.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
         </dependency>
     </dependencies>
 </project>
