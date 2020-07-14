@@ -1,9 +1,6 @@
 package zeus.playground.thread.pool;
 
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author: KG
@@ -38,7 +35,10 @@ public class ThreadPoolExecutorDemo {
      * SynchronousQueue并不是一个真正的队列，而是一种管理直接在线程间移交信息的机制
      */
     private static void multipleThreadPoolTest() {
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 1, TimeUnit.SECONDS, new SynchronousQueue<>());
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 1, TimeUnit.SECONDS,
+                new SynchronousQueue<>(),
+                Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.DiscardPolicy());
         for (int i = 0; i < 10; i++) {
             threadPoolExecutor.execute(() -> {
                 try {
