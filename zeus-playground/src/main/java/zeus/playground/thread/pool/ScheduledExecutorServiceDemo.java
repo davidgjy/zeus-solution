@@ -1,4 +1,4 @@
-package zeus.playground.thread;
+package zeus.playground.thread.pool;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

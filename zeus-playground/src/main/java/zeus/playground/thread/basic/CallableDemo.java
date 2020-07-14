@@ -1,4 +1,4 @@
-package zeus.playground.thread;
+package zeus.playground.thread.basic;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
